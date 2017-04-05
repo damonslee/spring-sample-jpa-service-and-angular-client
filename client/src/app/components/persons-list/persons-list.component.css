@@ -1,0 +1,21 @@
+th.sortable, th.sortableAsc, th.sortableDesc {
+	cursor: pointer;
+}
+th.sortable::after {
+	float: right;
+	font-family: "Glyphicons Halflings";
+	content: "\E150";
+	color: grey;
+}
+th.sortableAsc::after {
+	float: right;
+	font-family: "Glyphicons Halflings";
+	content: "\E151";
+	color: grey;
+}
+th.sortableDesc::after {
+	float: right;
+	font-family: "Glyphicons Halflings";
+	content: "\E152";
+	color: grey;
+}

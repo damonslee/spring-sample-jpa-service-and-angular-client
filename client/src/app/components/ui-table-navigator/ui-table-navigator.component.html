@@ -1,0 +1,26 @@
+<div class="navigator-panel">
+	<div class="left-panel">
+		<select name="pageSizeStr" class="form-control" [(ngModel)]="pageSizeStr" size="1" (change)="pageSizeChange()">
+			<option *ngFor="let pageSizeItem of pageSizeItems" value="{{pageSizeItem.value}}">{{pageSizeItem.caption}}</option>
+		</select>
+		Items on page
+	</div>
+	<div style="float: right">
+		<div>
+			<ul class="pagination justify-content-center" style="margin: 0">
+				<li class="page-item" [class.disabled]="currentPage === 0">
+					<a class="page-link" href="javascript:void(0)" (click)="getPrevPage()"><span aria-hidden="true">&laquo;</span></a>
+				</li>
+				<li *ngFor="let pageItem of pagesItems" class="page-item" [class.active]="pageItem.pageNo === currentPage">
+					<a class="page-link" href="javascript:void(0)" (click)="getPageData(pageItem)">{{pageItem.caption}}</a>
+				</li>
+				<li class="page-item" [class.disabled]="currentPage === lastPage - 1">
+					<a class="page-link" href="javascript:void(0)" (click)="getNextPage()"><span aria-hidden="true">&raquo;</span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div style="text-align: right; padding-right: 100px">
+	From {{ currentPage * pageSize + 1 }} to {{ ((currentPage + 1 ) * pageSize < totalRowsCount) ? ((currentPage + 1) * pageSize) : totalRowsCount }} of {{ totalRowsCount }}
+</div>

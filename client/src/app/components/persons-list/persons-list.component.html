@@ -1,0 +1,71 @@
+<div class="container">
+	<div class="alert alert-danger" *ngIf="messages.length > 0">
+		<strong>Error message:</strong><br>
+		<ul>
+			<li *ngFor="let message of messages">{{message}}</li>
+		</ul>
+	</div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th (click)="setSortByColumn('lastName')"
+					[class.sortableAsc]="sortBy === 'lastName' && sortDirection === 'ASC'"
+					[class.sortableDesc]="sortBy === 'lastName' && sortDirection === 'DESC'"
+					[class.sortable]="sortBy !== 'lastName'"
+				>Last name</th>
+				<th (click)="setSortByColumn('firstName')"
+					[class.sortableAsc]="sortBy === 'firstName' && sortDirection === 'ASC'"
+					[class.sortableDesc]="sortBy === 'firstName' && sortDirection === 'DESC'"
+					[class.sortable]="sortBy !== 'firstName'"
+				>First name</th>
+				<th (click)="setSortByColumn('socialNumber')"
+					[class.sortableAsc]="sortBy === 'socialNumber' && sortDirection === 'ASC'"
+					[class.sortableDesc]="sortBy === 'socialNumber' && sortDirection === 'DESC'"
+					[class.sortable]="sortBy !== 'socialNumber'"
+				>Social number</th>
+				<th (click)="setSortByColumn('telephone')"
+					[class.sortableAsc]="sortBy === 'telephone' && sortDirection === 'ASC'"
+					[class.sortableDesc]="sortBy === 'telephone' && sortDirection === 'DESC'"
+					[class.sortable]="sortBy !== 'telephone'"
+				>Telephone</th>
+				<th (click)="setSortByColumn('birthDate')"
+					[class.sortableAsc]="sortBy === 'birthDate' && sortDirection === 'ASC'"
+					[class.sortableDesc]="sortBy === 'birthDate' && sortDirection === 'DESC'"
+					[class.sortable]="sortBy !== 'birthDate'"
+				>Birth date</th>
+				<th (click)="setSortByColumn('city')"
+					[class.sortableAsc]="sortBy === 'city' && sortDirection === 'ASC'"
+					[class.sortableDesc]="sortBy === 'city' && sortDirection === 'DESC'"
+					[class.sortable]="sortBy !== 'city'"
+				>City</th>
+			</tr>
+		</thead>
+		<tbody *ngIf="totalRowsCount > 0">
+			<tr *ngFor="let person of personsList">
+				<td>{{ person.lastName }}</td>
+				<td>{{ person.firstName }}</td>
+				<td>{{ person.socialNumber }}</td>
+				<td>{{ formatTelephone(person.telephone) }}</td>
+				<td>{{ person.birthDate | date:'y-MM-dd' }}</td>
+				<td>{{ person.city }}</td>
+			</tr>
+		</tbody>
+		<tbody *ngIf="totalRowsCount === 0">
+			<tr>
+				<td colspan='6'>Loading...</td>
+			</tr>
+		</tbody>
+	</table>
+	<nav *ngIf="totalRowsCount > 0">
+		<app-ui-table-navigator
+				[totalRowsCount]="totalRowsCount"
+				[pageSize]="pageSize"
+				[currentPage]="pageNumber"
+				(pageSizeChanged)="handlePageSizeChanged($event)"
+				(currentPageChanged)="handleCurrentPageChanged($event)"
+		></app-ui-table-navigator>
+	</nav>
+	<div>
+		<button class="btn btn-default">Test</button>
+	</div>
+</div>

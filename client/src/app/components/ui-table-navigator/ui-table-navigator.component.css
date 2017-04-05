@@ -1,0 +1,10 @@
+div.navigator-panel {
+	height: 40px;
+}
+div.left-panel {
+	float: left;
+}
+div.left-panel > select {
+	 width: auto;
+	 display: inline;
+}
