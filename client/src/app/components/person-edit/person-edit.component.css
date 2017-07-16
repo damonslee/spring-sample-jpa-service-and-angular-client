@@ -1,0 +1,5 @@
+div.required > label::before {
+	content: "* ";
+	color: red;
+	font-weight: bold;
+}

@@ -1,4 +1,4 @@
-package com.example.model;
+package com.example.domain;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "persons")
@@ -17,7 +19,7 @@ public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ps_id")
 	private Long id;
 
@@ -33,11 +35,26 @@ public class Person implements Serializable {
 	@Column(name = "ps_telephone")
 	private String telephone;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "ps_birthdate")
 	private Date birthDate;
 	
 	@Column(name = "ps_city")
 	private String city;
+
+	public Person() {
+	}
+
+	public Person assign(Person person) {
+		this.firstName = person.firstName;
+		this.lastName = person.lastName;
+		this.socialNumber = person.socialNumber;
+		this.telephone = person.telephone;
+		this.birthDate = person.birthDate;
+		this.city = person.city;
+	
+		return this;
+	}
 
 	public Long getId() {
 		return id;

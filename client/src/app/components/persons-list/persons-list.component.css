@@ -19,3 +19,6 @@ th.sortableDesc::after {
 	content: "\E152";
 	color: grey;
 }
+tbody > tr {
+	cursor: pointer;
+}

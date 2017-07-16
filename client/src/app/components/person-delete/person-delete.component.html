@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{ translationService.translate('Delete person') }}</h1>
+				</div>
+				<div class="panel-body">
+					<ui-errors-panel [errorsList]="errorsList"></ui-errors-panel>
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<p *ngIf="person">{{ translationService.translate('Are you sure you want to delete') }} <strong>{{ person.lastName + ' ' + person.firstName }}</strong>?</p>
+						</div>
+						<form (ngSubmit)="submitForm()" novalidate>
+							<div class="col-sm-12 text-right">
+								<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{ translationService.translate('Delete') }}</button>
+								<button type="button" class="btn btn-secondary" (click)="cancel()">{{ translationService.translate('Cancel') }}</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

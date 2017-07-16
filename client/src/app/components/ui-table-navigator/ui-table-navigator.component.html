@@ -1,12 +1,12 @@
-<div class="navigator-panel">
-	<div class="left-panel">
-		<select name="pageSizeStr" class="form-control" [(ngModel)]="pageSizeStr" size="1" (change)="pageSizeChange()">
-			<option *ngFor="let pageSizeItem of pageSizeItems" value="{{pageSizeItem.value}}">{{pageSizeItem.caption}}</option>
-		</select>
-		Items on page
-	</div>
-	<div style="float: right">
-		<div>
+<div>
+	<div class="row">
+		<div class="col-md-3 left-panel">
+			<select name="pageSizeStr" class="form-control" [(ngModel)]="pageSizeStr" size="1" (change)="pageSizeChange()">
+				<option *ngFor="let pageSizeItem of pageSizeItems" value="{{pageSizeItem.value}}">{{pageSizeItem.caption}}</option>
+			</select>
+			{{ translationService.translate('Items on page') }}
+		</div>
+		<div class="col-md-9 text-right">
 			<ul class="pagination justify-content-center" style="margin: 0">
 				<li class="page-item" [class.disabled]="currentPage === 0">
 					<a class="page-link" href="javascript:void(0)" (click)="getPrevPage()"><span aria-hidden="true">&laquo;</span></a>
@@ -20,7 +20,9 @@
 			</ul>
 		</div>
 	</div>
-</div>
-<div style="text-align: right; padding-right: 100px">
-	From {{ currentPage * pageSize + 1 }} to {{ ((currentPage + 1 ) * pageSize < totalRowsCount) ? ((currentPage + 1) * pageSize) : totalRowsCount }} of {{ totalRowsCount }}
+	<div class="row">
+		<div class="col-md-12 text-right">
+			{{ translationService.translate('From [From ... to ... of ...]') + ' ' + (currentPage * pageSize + 1) + ' ' + translationService.translate('to [From ... to ... of ...]') + ' ' + (((currentPage + 1 ) * pageSize < totalRowsCount) ? ((currentPage + 1) * pageSize) : totalRowsCount) + ' ' +  translationService.translate('of [From ... to ... of ...]') + ' ' + totalRowsCount }}
+		</div>
+	</div>
 </div>

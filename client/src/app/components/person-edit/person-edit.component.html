@@ -1,0 +1,59 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title" *ngIf="data.action === 'new'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {{ translationService.translate('New person') }}</h1>
+					<h1 class="panel-title" *ngIf="data.action === 'modify'"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {{ translationService.translate('Edit person') }}</h1>
+				</div>
+				<div class="panel-body">
+					<ui-errors-panel [errorsList]="errorsList"></ui-errors-panel>
+					<div class="row">
+						<form [formGroup]="editForm" (ngSubmit)="submitForm()" novalidate>
+							<div class="form-group required">
+								<label class="col-sm-2 control-label text-right" for="lastName">{{ translationService.translate('Last name') }}</label>
+								<div class="col-sm-10">
+									<input type="text" formControlName="lastName" id="lastName" placeholder="{{ translationService.translate('Last name') }}" class="form-control" MaxLength="35">
+								</div>
+							</div>
+							<div class="form-group required">
+								<label class="col-sm-2 control-label text-right" for="firstName">{{ translationService.translate('First name') }}</label>
+								<div class="col-sm-10">
+									<input type="text" formControlName="firstName" id="firstName" placeholder="{{ translationService.translate('First name') }}" class="form-control" MaxLength="35">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right" for="socialNumber">{{ translationService.translate('Social number') }}</label>
+								<div class="col-sm-10">
+									<input type="text" formControlName="socialNumber" id="socialNumber" placeholder="{{ translationService.translate('Social number') }}" class="form-control" MaxLength="35">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right" for="telephone">{{ translationService.translate('Telephone') }}</label>
+								<div class="col-sm-10">
+									<input type="text" formControlName="telephone" id="telephone" placeholder="{{ translationService.translate('Telephone') }}" class="form-control" MaxLength="35">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right" for="birthDate">{{ translationService.translate('Birth date') }}</label>
+								<div class="col-sm-10">
+									<input type="date" formControlName="birthDate" id="birthDate" placeholder="{{ translationService.translate('Birth date') }}" class="form-control" MaxLength="10">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label text-right" for="city">{{ translationService.translate('City') }}</label>
+								<div class="col-sm-10">
+									<input type="text" formControlName="city" id="city" placeholder="{{ translationService.translate('City') }}" class="form-control" MaxLength="35">
+								</div>
+							</div>
+							<div class="col-sm-12 text-right">
+								<button type="submit" class="btn btn-primary" [disabled]="!editForm.valid"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ translationService.translate('Save') }}</button>
+								<button type="button" class="btn btn-secondary" (click)="cancel()">{{ translationService.translate('Cancel') }}</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

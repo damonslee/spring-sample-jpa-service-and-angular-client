@@ -1,5 +1,7 @@
 import { Component, Input, Output, OnInit, OnChanges, EventEmitter } from '@angular/core';
 
+import { TranslationService } from '../../services/translation.service';
+
 interface PageSizeItem {
 	value: number;
 	caption: string;
@@ -11,7 +13,7 @@ interface PageItem {
 }
 
 @Component({
-  selector: 'app-ui-table-navigator',
+  selector: 'ui-table-navigator',
   templateUrl: './ui-table-navigator.component.html',
   styleUrls: ['./ui-table-navigator.component.css']
 })
@@ -21,13 +23,13 @@ export class UiTableNavigatorComponent implements OnInit, OnChanges {
 	@Input() public currentPage: number;
 	@Output() public pageSizeChanged: EventEmitter<any>;
 	@Output() public currentPageChanged: EventEmitter<any>;
-	private pageSizeStr: string;
-	private lastPage: number;
+	public pageSizeStr: string;
+	public lastPage: number;
 	private dataOffset: number;
-	private pageSizeItems: PageSizeItem[];
-	private pagesItems: PageItem[];
+	public pageSizeItems: PageSizeItem[];
+	public pagesItems: PageItem[];
 
-	constructor() {
+	constructor(public translationService: TranslationService) {
 		this.pageSizeChanged = new EventEmitter();
 		this.currentPageChanged = new EventEmitter();
 

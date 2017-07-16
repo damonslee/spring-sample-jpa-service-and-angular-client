@@ -1,0 +1,6 @@
+<div class="alert alert-danger alert-dismissable" *ngIf="errorsList.length > 0">
+	<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <strong>{{ translationService.translate('Error message') }}:</strong> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+	<ul>
+		<li *ngFor="let errorMsg of errorsList">{{ translationService.translate(errorMsg) }}</li>
+	</ul>
+</div>
